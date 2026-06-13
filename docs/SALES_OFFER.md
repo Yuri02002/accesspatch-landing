@@ -12,11 +12,23 @@ We do not sell an accessibility overlay. We make real code patches and an eviden
 - A clear list of issues that still need human judgment.
 - A CI workflow that can attach reports and patches as build artifacts.
 
-## What this is not
+## Safety boundary
+
+### What AccessPatch is
+
+AccessPatch is an accessibility scan and repair-report tool for web agencies and developers.
+
+It helps teams find automatically detectable issues, create safe patch suggestions, and deliver evidence reports that a client and developer can both understand.
+
+### What AccessPatch is not
 
 AccessPatch is not a legal compliance certificate, not an overlay, and not a claim that a site is fully WCAG, ADA, or EAA compliant.
 
-Automated testing cannot prove full WCAG compliance. This tool identifies automatically detectable issues and suggests or applies safe fixes. Manual review is required for full conformance assessment.
+Automated testing cannot prove full WCAG, EAA, or ADA compliance. This tool identifies automatically detectable issues and suggests or applies safe fixes. Manual review remains required.
+
+This boundary matches W3C/WAI guidance: automated tools can support accessibility evaluation, but they cannot determine accessibility on their own and human judgment is still needed.
+
+The first commercial focus is web agencies that build or maintain webshops and templates. The European Accessibility Act includes e-commerce among covered services, so webshop workflows are a logical place to start.
 
 ## Starter package
 
@@ -31,4 +43,3 @@ Use this as the first sellable service:
 ## Buyer-friendly wording
 
 "We find the issues machines can reliably detect, patch the safe ones in code, and document what still needs human review. No overlay, no fake compliance promise."
-
