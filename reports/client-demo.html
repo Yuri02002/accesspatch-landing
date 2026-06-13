@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AccessPatch Accessibility Report</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, Arial, sans-serif; --ink: #17202a; --muted: #52616f; --line: #d6dee6; --panel: #fff; --wash: #f7f9fb; --safe: #0f766e; --review: #9a5b00; --manual: #9f1239; --brand: #123c69; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--wash); }
+    header, main { max-width: 1120px; margin: 0 auto; padding: 24px; }
+    header { padding-top: 32px; }
+    h1 { margin: 0 0 8px; font-size: 34px; letter-spacing: 0; }
+    h2 { margin-top: 34px; font-size: 22px; letter-spacing: 0; }
+    h3 { margin: 0 0 8px; font-size: 16px; letter-spacing: 0; }
+    p { line-height: 1.55; }
+    a { color: var(--brand); }
+    .tagline { max-width: 760px; color: var(--muted); font-size: 18px; }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .nav a { border: 1px solid var(--line); border-radius: 6px; background: var(--panel); padding: 8px 10px; text-decoration: none; font-weight: 700; }
+    .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+    .metric, .issue, .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+    .metric { padding: 16px; }
+    .metric b { display: block; font-size: 28px; }
+    .metric span { color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+    .panel { padding: 16px; }
+    .badge { display: inline-flex; align-items: center; min-height: 22px; padding: 0 8px; border-radius: 999px; color: #fff; font-size: 12px; font-weight: 700; }
+    .severity-critical { background: #991b1b; }
+    .severity-serious { background: #b45309; }
+    .severity-moderate { background: #0369a1; }
+    .severity-minor, .severity-none { background: #475569; }
+    .fix-safe { background: var(--safe); }
+    .fix-review-required { background: var(--review); }
+    .fix-manual-only { background: var(--manual); }
+    .issue { margin: 12px 0; padding: 0; }
+    .filter { width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 6px; padding: 0 12px; font: inherit; margin: 8px 0 10px; background: #fff; }
+    summary { cursor: pointer; display: grid; grid-template-columns: auto auto minmax(130px, 0.4fr) 1fr; gap: 10px; align-items: center; padding: 14px 16px; }
+    dl { display: grid; grid-template-columns: 150px 1fr; gap: 8px 16px; padding: 0 16px 16px; }
+    dt { font-weight: 700; color: var(--muted); }
+    dd { margin: 0; min-width: 0; }
+    pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #eef3f7; padding: 12px; border-radius: 6px; }
+    .disclaimer { border-left: 4px solid #0f766e; background: #ecfdf5; padding: 14px 16px; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px; text-align: left; vertical-align: top; }
+    th { background: #eef3f7; }
+    .empty { color: var(--muted); }
+    .proof-list { margin: 0; padding-left: 20px; }
+    @media (max-width: 720px) { summary, dl { grid-template-columns: 1fr; } header, main { padding: 18px; } }
+    @media print {
+      body { background: #fff; color: #000; }
+      header, main { max-width: none; padding: 0; }
+      .nav, .filter, script { display: none !important; }
+      .metric, .issue, .panel, table { break-inside: avoid; border-color: #aaa; }
+      details { page-break-inside: avoid; }
+      details:not([open]) > *:not(summary) { display: block; }
+      a { color: #000; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AccessPatch Accessibility Report</h1>
+    <p class="tagline">No overlay. Real code patches and evidence reports for developers.</p>
+    <p>Scanned at 2026-06-13T15:47:42.940Z with axe 4.12.1.</p>
+    <nav class="nav" aria-label="Report sections">
+      <a href="#executive-summary">Executive summary</a>
+      <a href="#safe-patches">Safe Patches</a>
+      <a href="#manual-review">Manual Review</a>
+      <a href="#wcag-map">WCAG Map</a>
+      <a href="#developer-details">Developer Details</a>
+    </nav>
+  </header>
+  <main>
+    <section id="executive-summary" aria-labelledby="executive-summary-title">
+      <h2 id="executive-summary-title">Executive summary</h2>
+      <div class="summary" aria-label="Report summary">
+        <div class="metric"><b>30</b><span>Total issues</span></div>
+        <div class="metric"><b>8</b><span>Safe fixes</span></div>
+        <div class="metric"><b>1</b><span>Review required</span></div>
+        <div class="metric"><b>21</b><span>Manual only</span></div>
+      </div>
+      <div class="grid">
+        <div class="panel">
+          <h3>What this proves</h3>
+          <p>AccessPatch found automatically detectable issues, separates deterministic safe patches from human decisions, and leaves an audit trail for the pull request.</p>
+        </div>
+        <div class="panel">
+          <h3>What this does not claim</h3>
+          <p>It does not promise instant compliance. Manual review remains required for meaning, intent, keyboard behavior, screen reader experience, and legal sign-off.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="safe-patches" aria-labelledby="safe-patches-title">
+      <h2 id="safe-patches-title">Safe Patches</h2>
+      <div class="panel">
+        <p>Dry-run creates <code>patches/suggested-fixes.patch</code>. <code>--apply-safe</code> only changes deterministic fixes such as document language, missing titles, existing labels, duplicate IDs, button types, and focus-visible fallbacks.</p>
+        <ul class="proof-list"><li><strong>button-name</strong>: Add an accessible name using the existing text &quot;Open menu&quot;.</li>
+<li><strong>button-name</strong>: Add an accessible name using the existing text &quot;Open cart&quot;.</li>
+<li><strong>button-name</strong>: Add an accessible name using the existing text &quot;Save headphones&quot;.</li>
+<li><strong>button-name</strong>: Add an accessible name using the existing text &quot;Save lamp&quot;.</li>
+<li><strong>button-name</strong>: Add an accessible name using the existing text &quot;Save cable kit&quot;.</li>
+<li><strong>button-name</strong>: Add an accessible name using the existing text &quot;Save travel dock&quot;.</li>
+<li><strong>document-title</strong>: Add a concise document title in the head element.</li>
+<li><strong>html-has-lang</strong>: Add a lang attribute to the root html element, for example lang=&quot;en&quot;.</li></ul>
+      </div>
+    </section>
+
+    <section id="manual-review" aria-labelledby="manual-review-title">
+      <h2 id="manual-review-title">Manual Review</h2>
+      <div class="panel">
+        <p>These items need a human because the correct fix depends on content meaning, design intent, or user-flow behavior.</p>
+        <ul class="proof-list"><li><strong>image-alt</strong>: Decorative intent should be confirmed before suppressing an image from assistive technology.</li>
+<li><strong>color-contrast</strong>: Color contrast changes can affect brand tokens, states, and visual hierarchy.</li>
+<li><strong>color-contrast</strong>: Color contrast changes can affect brand tokens, states, and visual hierarchy.</li>
+<li><strong>color-contrast</strong>: Color contrast changes can affect brand tokens, states, and visual hierarchy.</li>
+<li><strong>color-contrast</strong>: Color contrast changes can affect brand tokens, states, and visual hierarchy.</li>
+<li><strong>color-contrast</strong>: Color contrast changes can affect brand tokens, states, and visual hierarchy.</li>
+<li><strong>color-contrast</strong>: Color contrast changes can affect brand tokens, states, and visual hierarchy.</li>
+<li><strong>color-contrast</strong>: Color contrast changes can affect brand tokens, states, and visual hierarchy.</li>
+<li><strong>color-contrast</strong>: Color contrast changes can affect brand tokens, states, and visual hierarchy.</li>
+<li><strong>color-contrast</strong>: Color contrast changes can affect brand tokens, states, and visual hierarchy.</li>
+<li><strong>color-contrast</strong>: Color contrast changes can affect brand tokens, states, and visual hierarchy.</li>
+<li><strong>image-alt</strong>: A tool must not invent meaningful alt text for content images.</li>
+<li><strong>image-alt</strong>: A tool must not invent meaningful alt text for content images.</li>
+<li><strong>image-alt</strong>: A tool must not invent meaningful alt text for content images.</li>
+<li><strong>image-alt</strong>: A tool must not invent meaningful alt text for content images.</li>
+<li><strong>image-alt</strong>: A tool must not invent meaningful alt text for content images.</li>
+<li><strong>image-alt</strong>: A tool must not invent meaningful alt text for content images.</li>
+<li><strong>image-alt</strong>: A tool must not invent meaningful alt text for content images.</li>
+<li><strong>image-alt</strong>: A tool must not invent meaningful alt text for content images.</li>
+<li><strong>image-alt</strong>: A tool must not invent meaningful alt text for content images.</li>
+<li><strong>link-name</strong>: Icon-only controls need a semantic label. Do not guess the action from an icon alone.</li>
+<li><strong>link-name</strong>: Icon-only controls need a semantic label. Do not guess the action from an icon alone.</li></ul>
+      </div>
+    </section>
+
+    <section id="wcag-map" aria-labelledby="wcag-map-title">
+      <h2 id="wcag-map-title">WCAG Map</h2>
+      <table>
+        <thead><tr><th>Tag</th><th>Total issues</th><th>Safe</th><th>Needs review</th></tr></thead>
+        <tbody><tr>
+        <td>wcag2a</td>
+        <td>20</td>
+        <td>8</td>
+        <td>12</td>
+      </tr>
+<tr>
+        <td>wcag111</td>
+        <td>10</td>
+        <td>0</td>
+        <td>10</td>
+      </tr>
+<tr>
+        <td>wcag143</td>
+        <td>10</td>
+        <td>0</td>
+        <td>10</td>
+      </tr>
+<tr>
+        <td>wcag2aa</td>
+        <td>10</td>
+        <td>0</td>
+        <td>10</td>
+      </tr>
+<tr>
+        <td>wcag412</td>
+        <td>8</td>
+        <td>6</td>
+        <td>2</td>
+      </tr>
+<tr>
+        <td>wcag244</td>
+        <td>2</td>
+        <td>0</td>
+        <td>2</td>
+      </tr>
+<tr>
+        <td>wcag242</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+      </tr>
+<tr>
+        <td>wcag311</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+      </tr></tbody>
+      </table>
+    </section>
+
+    <section id="disclaimer" aria-labelledby="disclaimer-title">
+      <h2 id="disclaimer-title">Disclaimer</h2>
+      <p class="disclaimer">Automated testing cannot prove full WCAG compliance. This tool identifies automatically detectable issues and suggests or applies safe fixes. Manual review is required for full conformance assessment.</p>
+    </section>
+
+    <section id="developer-details" aria-labelledby="developer-details-title">
+      <h2 id="developer-details-title">Developer Details</h2>
+      <label for="issue-filter">Filter issues by rule, severity, fixability, or URL</label>
+      <input id="issue-filter" class="filter" type="search" data-filter placeholder="Filter issues">
+      <details class="issue" data-issue data-severity="critical" data-fixability="safe" data-rule="button-name">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-safe">safe</span>
+    <strong>button-name</strong>
+    <span>Buttons must have discernible text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag412</dd>
+    <dt>Suggested fix</dt><dd>Add an accessible name using the existing text &quot;Open menu&quot;.</dd>
+    <dt>Manual review</dt><dd>Not required for this issue classification.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:16 (high, matched axe HTML snippet)</dd>
+    <dt>Targets</dt><dd>button[data-accesspatch-label=&quot;Open menu&quot;]</dd>
+    <dt>HTML</dt><dd><pre>&lt;button data-accesspatch-label=&quot;Open menu&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;menu&lt;/span&gt;&lt;/button&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="safe" data-rule="button-name">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-safe">safe</span>
+    <strong>button-name</strong>
+    <span>Buttons must have discernible text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag412</dd>
+    <dt>Suggested fix</dt><dd>Add an accessible name using the existing text &quot;Open cart&quot;.</dd>
+    <dt>Manual review</dt><dd>Not required for this issue classification.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:17 (high, matched axe HTML snippet)</dd>
+    <dt>Targets</dt><dd>button[data-accesspatch-label=&quot;Open cart&quot;]</dd>
+    <dt>HTML</dt><dd><pre>&lt;button data-accesspatch-label=&quot;Open cart&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;cart&lt;/span&gt;&lt;/button&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="safe" data-rule="button-name">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-safe">safe</span>
+    <strong>button-name</strong>
+    <span>Buttons must have discernible text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag412</dd>
+    <dt>Suggested fix</dt><dd>Add an accessible name using the existing text &quot;Save headphones&quot;.</dd>
+    <dt>Manual review</dt><dd>Not required for this issue classification.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:46 (high, matched axe HTML snippet)</dd>
+    <dt>Targets</dt><dd>button[data-accesspatch-label=&quot;Save headphones&quot;]</dd>
+    <dt>HTML</dt><dd><pre>&lt;button data-accesspatch-label=&quot;Save headphones&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;save&lt;/span&gt;
+          &lt;/button&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="safe" data-rule="button-name">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-safe">safe</span>
+    <strong>button-name</strong>
+    <span>Buttons must have discernible text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag412</dd>
+    <dt>Suggested fix</dt><dd>Add an accessible name using the existing text &quot;Save lamp&quot;.</dd>
+    <dt>Manual review</dt><dd>Not required for this issue classification.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:56 (high, matched axe HTML snippet)</dd>
+    <dt>Targets</dt><dd>button[data-accesspatch-label=&quot;Save lamp&quot;]</dd>
+    <dt>HTML</dt><dd><pre>&lt;button data-accesspatch-label=&quot;Save lamp&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;save&lt;/span&gt;&lt;/button&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="safe" data-rule="button-name">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-safe">safe</span>
+    <strong>button-name</strong>
+    <span>Buttons must have discernible text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag412</dd>
+    <dt>Suggested fix</dt><dd>Add an accessible name using the existing text &quot;Save cable kit&quot;.</dd>
+    <dt>Manual review</dt><dd>Not required for this issue classification.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:65 (high, matched axe HTML snippet)</dd>
+    <dt>Targets</dt><dd>button[data-accesspatch-label=&quot;Save cable kit&quot;]</dd>
+    <dt>HTML</dt><dd><pre>&lt;button data-accesspatch-label=&quot;Save cable kit&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;save&lt;/span&gt;
+          &lt;/button&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="safe" data-rule="button-name">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-safe">safe</span>
+    <strong>button-name</strong>
+    <span>Buttons must have discernible text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag412</dd>
+    <dt>Suggested fix</dt><dd>Add an accessible name using the existing text &quot;Save travel dock&quot;.</dd>
+    <dt>Manual review</dt><dd>Not required for this issue classification.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:75 (high, matched axe HTML snippet)</dd>
+    <dt>Targets</dt><dd>button[data-accesspatch-label=&quot;Save travel dock&quot;]</dd>
+    <dt>HTML</dt><dd><pre>&lt;button data-accesspatch-label=&quot;Save travel dock&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;save&lt;/span&gt;
+          &lt;/button&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="manual-only" data-rule="color-contrast">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>color-contrast</strong>
+    <span>Elements must meet minimum color contrast ratio thresholds</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2aa, wcag143</dd>
+    <dt>Suggested fix</dt><dd>Adjust foreground/background colors or design tokens after checking brand and state requirements.</dd>
+    <dt>Manual review</dt><dd>Color contrast changes can affect brand tokens, states, and visual hierarchy.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:28 (medium, matched selector .low)</dd>
+    <dt>Targets</dt><dd>div &gt; .low</dd>
+    <dt>HTML</dt><dd><pre>&lt;p class=&quot;low&quot;&gt;Low contrast text is intentionally hard to read here.&lt;/p&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="manual-only" data-rule="color-contrast">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>color-contrast</strong>
+    <span>Elements must meet minimum color contrast ratio thresholds</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2aa, wcag143</dd>
+    <dt>Suggested fix</dt><dd>Adjust foreground/background colors or design tokens after checking brand and state requirements.</dd>
+    <dt>Manual review</dt><dd>Color contrast changes can affect brand tokens, states, and visual hierarchy.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:28 (medium, matched selector .low)</dd>
+    <dt>Targets</dt><dd>article:nth-child(1) &gt; .low</dd>
+    <dt>HTML</dt><dd><pre>&lt;p class=&quot;low&quot;&gt;Studio comfort, travel case, quick charge.&lt;/p&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="manual-only" data-rule="color-contrast">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>color-contrast</strong>
+    <span>Elements must meet minimum color contrast ratio thresholds</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2aa, wcag143</dd>
+    <dt>Suggested fix</dt><dd>Adjust foreground/background colors or design tokens after checking brand and state requirements.</dd>
+    <dt>Manual review</dt><dd>Color contrast changes can affect brand tokens, states, and visual hierarchy.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:28 (medium, matched selector .low)</dd>
+    <dt>Targets</dt><dd>article:nth-child(2) &gt; .low</dd>
+    <dt>HTML</dt><dd><pre>&lt;p class=&quot;low&quot;&gt;Warm light presets and desk clamp.&lt;/p&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="manual-only" data-rule="color-contrast">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>color-contrast</strong>
+    <span>Elements must meet minimum color contrast ratio thresholds</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2aa, wcag143</dd>
+    <dt>Suggested fix</dt><dd>Adjust foreground/background colors or design tokens after checking brand and state requirements.</dd>
+    <dt>Manual review</dt><dd>Color contrast changes can affect brand tokens, states, and visual hierarchy.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:28 (medium, matched selector .low)</dd>
+    <dt>Targets</dt><dd>article:nth-child(3) &gt; .low</dd>
+    <dt>HTML</dt><dd><pre>&lt;p class=&quot;low&quot;&gt;Reusable clips and sleeves.&lt;/p&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="manual-only" data-rule="color-contrast">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>color-contrast</strong>
+    <span>Elements must meet minimum color contrast ratio thresholds</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2aa, wcag143</dd>
+    <dt>Suggested fix</dt><dd>Adjust foreground/background colors or design tokens after checking brand and state requirements.</dd>
+    <dt>Manual review</dt><dd>Color contrast changes can affect brand tokens, states, and visual hierarchy.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:28 (medium, matched selector .low)</dd>
+    <dt>Targets</dt><dd>article:nth-child(4) &gt; .low</dd>
+    <dt>HTML</dt><dd><pre>&lt;p class=&quot;low&quot;&gt;HDMI, USB-C, ethernet, compact case.&lt;/p&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="manual-only" data-rule="color-contrast">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>color-contrast</strong>
+    <span>Elements must meet minimum color contrast ratio thresholds</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2aa, wcag143</dd>
+    <dt>Suggested fix</dt><dd>Adjust foreground/background colors or design tokens after checking brand and state requirements.</dd>
+    <dt>Manual review</dt><dd>Color contrast changes can affect brand tokens, states, and visual hierarchy.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:28 (medium, matched selector .low)</dd>
+    <dt>Targets</dt><dd>article:nth-child(5) &gt; .low</dd>
+    <dt>HTML</dt><dd><pre>&lt;p class=&quot;low&quot;&gt;Desk timer with silent alerts.&lt;/p&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="manual-only" data-rule="color-contrast">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>color-contrast</strong>
+    <span>Elements must meet minimum color contrast ratio thresholds</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2aa, wcag143</dd>
+    <dt>Suggested fix</dt><dd>Adjust foreground/background colors or design tokens after checking brand and state requirements.</dd>
+    <dt>Manual review</dt><dd>Color contrast changes can affect brand tokens, states, and visual hierarchy.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:28 (medium, matched selector .low)</dd>
+    <dt>Targets</dt><dd>article:nth-child(6) &gt; .low</dd>
+    <dt>HTML</dt><dd><pre>&lt;p class=&quot;low&quot;&gt;Dense foam and washable cover.&lt;/p&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="manual-only" data-rule="color-contrast">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>color-contrast</strong>
+    <span>Elements must meet minimum color contrast ratio thresholds</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2aa, wcag143</dd>
+    <dt>Suggested fix</dt><dd>Adjust foreground/background colors or design tokens after checking brand and state requirements.</dd>
+    <dt>Manual review</dt><dd>Color contrast changes can affect brand tokens, states, and visual hierarchy.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:28 (medium, matched selector .low)</dd>
+    <dt>Targets</dt><dd>article:nth-child(7) &gt; .low</dd>
+    <dt>HTML</dt><dd><pre>&lt;p class=&quot;low&quot;&gt;Oak finish and steel legs.&lt;/p&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="manual-only" data-rule="color-contrast">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>color-contrast</strong>
+    <span>Elements must meet minimum color contrast ratio thresholds</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2aa, wcag143</dd>
+    <dt>Suggested fix</dt><dd>Adjust foreground/background colors or design tokens after checking brand and state requirements.</dd>
+    <dt>Manual review</dt><dd>Color contrast changes can affect brand tokens, states, and visual hierarchy.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:28 (medium, matched selector .low)</dd>
+    <dt>Targets</dt><dd>article:nth-child(8) &gt; .low</dd>
+    <dt>HTML</dt><dd><pre>&lt;p class=&quot;low&quot;&gt;Soft light with USB power.&lt;/p&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="manual-only" data-rule="color-contrast">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>color-contrast</strong>
+    <span>Elements must meet minimum color contrast ratio thresholds</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2aa, wcag143</dd>
+    <dt>Suggested fix</dt><dd>Adjust foreground/background colors or design tokens after checking brand and state requirements.</dd>
+    <dt>Manual review</dt><dd>Color contrast changes can affect brand tokens, states, and visual hierarchy.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:28 (medium, matched selector .low)</dd>
+    <dt>Targets</dt><dd>article:nth-child(9) &gt; .low</dd>
+    <dt>HTML</dt><dd><pre>&lt;p class=&quot;low&quot;&gt;Foldable aluminum stand.&lt;/p&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="safe" data-rule="document-title">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-safe">safe</span>
+    <strong>document-title</strong>
+    <span>Documents must have &lt;title&gt; element to aid in navigation</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag242</dd>
+    <dt>Suggested fix</dt><dd>Add a concise document title in the head element.</dd>
+    <dt>Manual review</dt><dd>Not required for this issue classification.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:2 (high, matched axe HTML snippet)</dd>
+    <dt>Targets</dt><dd>html</dd>
+    <dt>HTML</dt><dd><pre>&lt;html&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="safe" data-rule="html-has-lang">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-safe">safe</span>
+    <strong>html-has-lang</strong>
+    <span>&lt;html&gt; element must have a lang attribute</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag311</dd>
+    <dt>Suggested fix</dt><dd>Add a lang attribute to the root html element, for example lang=&quot;en&quot;.</dd>
+    <dt>Manual review</dt><dd>Not required for this issue classification.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:2 (high, matched axe HTML snippet)</dd>
+    <dt>Targets</dt><dd>html</dd>
+    <dt>HTML</dt><dd><pre>&lt;html&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="manual-only" data-rule="image-alt">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>image-alt</strong>
+    <span>Images must have alternative text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag111</dd>
+    <dt>Suggested fix</dt><dd>Write accurate alt text based on the image purpose and surrounding content.</dd>
+    <dt>Manual review</dt><dd>A tool must not invent meaningful alt text for content images.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:23 (medium, matched selector .hero-image)</dd>
+    <dt>Targets</dt><dd>.hero-image</dd>
+    <dt>HTML</dt><dd><pre>&lt;img class=&quot;hero-image&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;420&#39; height=&#39;240&#39;%3E%3Crect width=&#39;420&#39; height=&#39;240&#39; fill=&#39;%2360a5fa&#39;/%3E%3C/svg%3E&quot;&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="manual-only" data-rule="image-alt">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>image-alt</strong>
+    <span>Images must have alternative text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag111</dd>
+    <dt>Suggested fix</dt><dd>Write accurate alt text based on the image purpose and surrounding content.</dd>
+    <dt>Manual review</dt><dd>A tool must not invent meaningful alt text for content images.</dd>
+    <dt>Source guess</dt><dd>Not mapped in this report.</dd>
+    <dt>Targets</dt><dd>article:nth-child(1) &gt; img</dd>
+    <dt>HTML</dt><dd><pre>&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;240&#39; height=&#39;160&#39;%3E%3Crect width=&#39;240&#39; height=&#39;160&#39; fill=&#39;%23f97316&#39;/%3E%3C/svg%3E&quot;&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="manual-only" data-rule="image-alt">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>image-alt</strong>
+    <span>Images must have alternative text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag111</dd>
+    <dt>Suggested fix</dt><dd>Write accurate alt text based on the image purpose and surrounding content.</dd>
+    <dt>Manual review</dt><dd>A tool must not invent meaningful alt text for content images.</dd>
+    <dt>Source guess</dt><dd>Not mapped in this report.</dd>
+    <dt>Targets</dt><dd>article:nth-child(2) &gt; img</dd>
+    <dt>HTML</dt><dd><pre>&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;240&#39; height=&#39;160&#39;%3E%3Crect width=&#39;240&#39; height=&#39;160&#39; fill=&#39;%2322c55e&#39;/%3E%3C/svg%3E&quot;&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="review-required" data-rule="image-alt">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-review-required">review-required</span>
+    <strong>image-alt</strong>
+    <span>Images must have alternative text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag111</dd>
+    <dt>Suggested fix</dt><dd>If the image is truly decorative, add alt=&quot;&quot;; otherwise write meaningful alt text.</dd>
+    <dt>Manual review</dt><dd>Decorative intent should be confirmed before suppressing an image from assistive technology.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:60 (medium, matched selector .decorative)</dd>
+    <dt>Targets</dt><dd>.decorative</dd>
+    <dt>HTML</dt><dd><pre>&lt;img class=&quot;decorative divider&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;240&#39; height=&#39;160&#39;%3E%3Crect width=&#39;240&#39; height=&#39;160&#39; fill=&#39;%238b5cf6&#39;/%3E%3C/svg%3E&quot;&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="manual-only" data-rule="image-alt">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>image-alt</strong>
+    <span>Images must have alternative text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag111</dd>
+    <dt>Suggested fix</dt><dd>Write accurate alt text based on the image purpose and surrounding content.</dd>
+    <dt>Manual review</dt><dd>A tool must not invent meaningful alt text for content images.</dd>
+    <dt>Source guess</dt><dd>Not mapped in this report.</dd>
+    <dt>Targets</dt><dd>article:nth-child(4) &gt; img</dd>
+    <dt>HTML</dt><dd><pre>&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;240&#39; height=&#39;160&#39;%3E%3Crect width=&#39;240&#39; height=&#39;160&#39; fill=&#39;%23ef4444&#39;/%3E%3C/svg%3E&quot;&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="manual-only" data-rule="image-alt">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>image-alt</strong>
+    <span>Images must have alternative text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag111</dd>
+    <dt>Suggested fix</dt><dd>Write accurate alt text based on the image purpose and surrounding content.</dd>
+    <dt>Manual review</dt><dd>A tool must not invent meaningful alt text for content images.</dd>
+    <dt>Source guess</dt><dd>Not mapped in this report.</dd>
+    <dt>Targets</dt><dd>article:nth-child(5) &gt; img</dd>
+    <dt>HTML</dt><dd><pre>&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;240&#39; height=&#39;160&#39;%3E%3Crect width=&#39;240&#39; height=&#39;160&#39; fill=&#39;%230ea5e9&#39;/%3E%3C/svg%3E&quot;&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="manual-only" data-rule="image-alt">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>image-alt</strong>
+    <span>Images must have alternative text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag111</dd>
+    <dt>Suggested fix</dt><dd>Write accurate alt text based on the image purpose and surrounding content.</dd>
+    <dt>Manual review</dt><dd>A tool must not invent meaningful alt text for content images.</dd>
+    <dt>Source guess</dt><dd>Not mapped in this report.</dd>
+    <dt>Targets</dt><dd>article:nth-child(6) &gt; img</dd>
+    <dt>HTML</dt><dd><pre>&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;240&#39; height=&#39;160&#39;%3E%3Crect width=&#39;240&#39; height=&#39;160&#39; fill=&#39;%2314b8a6&#39;/%3E%3C/svg%3E&quot;&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="manual-only" data-rule="image-alt">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>image-alt</strong>
+    <span>Images must have alternative text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag111</dd>
+    <dt>Suggested fix</dt><dd>Write accurate alt text based on the image purpose and surrounding content.</dd>
+    <dt>Manual review</dt><dd>A tool must not invent meaningful alt text for content images.</dd>
+    <dt>Source guess</dt><dd>Not mapped in this report.</dd>
+    <dt>Targets</dt><dd>article:nth-child(7) &gt; img</dd>
+    <dt>HTML</dt><dd><pre>&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;240&#39; height=&#39;160&#39;%3E%3Crect width=&#39;240&#39; height=&#39;160&#39; fill=&#39;%23f59e0b&#39;/%3E%3C/svg%3E&quot;&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="manual-only" data-rule="image-alt">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>image-alt</strong>
+    <span>Images must have alternative text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag111</dd>
+    <dt>Suggested fix</dt><dd>Write accurate alt text based on the image purpose and surrounding content.</dd>
+    <dt>Manual review</dt><dd>A tool must not invent meaningful alt text for content images.</dd>
+    <dt>Source guess</dt><dd>Not mapped in this report.</dd>
+    <dt>Targets</dt><dd>article:nth-child(8) &gt; img</dd>
+    <dt>HTML</dt><dd><pre>&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;240&#39; height=&#39;160&#39;%3E%3Crect width=&#39;240&#39; height=&#39;160&#39; fill=&#39;%237c3aed&#39;/%3E%3C/svg%3E&quot;&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="critical" data-fixability="manual-only" data-rule="image-alt">
+  <summary>
+    <span class="badge severity-critical">critical</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>image-alt</strong>
+    <span>Images must have alternative text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag111</dd>
+    <dt>Suggested fix</dt><dd>Write accurate alt text based on the image purpose and surrounding content.</dd>
+    <dt>Manual review</dt><dd>A tool must not invent meaningful alt text for content images.</dd>
+    <dt>Source guess</dt><dd>Not mapped in this report.</dd>
+    <dt>Targets</dt><dd>article:nth-child(9) &gt; img</dd>
+    <dt>HTML</dt><dd><pre>&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;240&#39; height=&#39;160&#39;%3E%3Crect width=&#39;240&#39; height=&#39;160&#39; fill=&#39;%2310b981&#39;/%3E%3C/svg%3E&quot;&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="manual-only" data-rule="link-name">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>link-name</strong>
+    <span>Links must have discernible text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag244, wcag412</dd>
+    <dt>Suggested fix</dt><dd>Add an accessible name after confirming the control purpose.</dd>
+    <dt>Manual review</dt><dd>Icon-only controls need a semantic label. Do not guess the action from an icon alone.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:85 (high, matched axe HTML snippet)</dd>
+    <dt>Targets</dt><dd>a[href$=&quot;timer&quot;]</dd>
+    <dt>HTML</dt><dd><pre>&lt;a href=&quot;/timer&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/a&gt;</pre></dd>
+  </dl>
+</details>
+<details class="issue" data-issue data-severity="serious" data-fixability="manual-only" data-rule="link-name">
+  <summary>
+    <span class="badge severity-serious">serious</span>
+    <span class="badge fix-manual-only">manual-only</span>
+    <strong>link-name</strong>
+    <span>Links must have discernible text</span>
+  </summary>
+  <dl>
+    <dt>URL</dt><dd>controlled broken demo</dd>
+    <dt>WCAG tags</dt><dd>wcag2a, wcag244, wcag412</dd>
+    <dt>Suggested fix</dt><dd>Add an accessible name after confirming the control purpose.</dd>
+    <dt>Manual review</dt><dd>Icon-only controls need a semantic label. Do not guess the action from an icon alone.</dd>
+    <dt>Source guess</dt><dd>examples/static-html-demo/index.html:93 (high, matched axe HTML snippet)</dd>
+    <dt>Targets</dt><dd>a[href$=&quot;rest&quot;]</dd>
+    <dt>HTML</dt><dd><pre>&lt;a href=&quot;/rest&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/a&gt;</pre></dd>
+  </dl>
+</details>
+    </section>
+  </main>
+  <script>
+    const filter = document.querySelector("[data-filter]");
+    const issues = Array.from(document.querySelectorAll("[data-issue]"));
+    filter?.addEventListener("input", () => {
+      const query = filter.value.toLowerCase().trim();
+      for (const issue of issues) {
+        issue.hidden = query.length > 0 && !issue.textContent.toLowerCase().includes(query);
+      }
+    });
+  </script>
+</body>
+</html>
+
